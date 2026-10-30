@@ -1,7 +1,7 @@
 import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula";
 import "./ListaPeliculas.css";
 
-function ListaPeliculas ({peliculas}) {
+function ListaPeliculas ({peliculas, onEliminar}) {
     return (
         <section className="lista-peliculas">
             <h2> Peliculas Disponibles </h2>
@@ -11,6 +11,7 @@ function ListaPeliculas ({peliculas}) {
                 titulo={pelicula.nombre}
                 anio={pelicula.anio}
                 imagen={pelicula.imagen}
+                onEliminar={() => onEliminar(pelicula.id)}
                 />
             ))}
         </section>

@@ -1,6 +1,6 @@
 import "./TarjetaPelicula.Css"
 
-function TarjetaPelicula ({imagen, titulo, anio}) {
+function TarjetaPelicula ({imagen, titulo, anio, onEliminar}) {
 
     return (
         <article className="tarjeta-pelicula">
@@ -8,6 +8,8 @@ function TarjetaPelicula ({imagen, titulo, anio}) {
             <h2>{titulo}</h2>
             <p className="anio-pelicula">{anio}</p>
             <button className="boton-primario"> «Ver más» </button>
+            <button className="boton-secundario"
+            onClick={onEliminar}> Eliminar </button>
         </article>
     ) 
 
