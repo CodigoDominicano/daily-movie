@@ -1,15 +1,20 @@
 import "./TarjetaPelicula.Css"
+import { Link } from "react-router-dom";
 
-function TarjetaPelicula ({imagen, titulo, anio, onEliminar}) {
+function TarjetaPelicula ({id, imagen, titulo, anio, onEliminar, onMarcarVista}) {
 
     return (
         <article className="tarjeta-pelicula">
             <img src={imagen} alt={`Póster de ${titulo}`} width="200"/>
             <h2>{titulo}</h2>
             <p className="anio-pelicula">{anio}</p>
-            <button className="boton-primario"> «Ver más» </button>
-            <button className="boton-secundario"
-            onClick={onEliminar}> Eliminar </button>
+            <Link to={`/pelicula/${id}`}> <button className="boton-primario"> Ver más</button> </Link>
+            {onEliminar && (
+            <button className="boton-secundario" onClick={onEliminar}> Eliminar </button>
+            )}
+            {onMarcarVista && (
+            <button type="button" className="boton-marcavista" onClick={onMarcarVista} > Marcar como vista </button>
+)}
         </article>
     ) 
 

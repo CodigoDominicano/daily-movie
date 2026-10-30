@@ -1,50 +1,142 @@
+
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+// ========================================
+// IMPORTACIÓN DE PÁGINAS
+// ========================================
+
+import Inicio from "./pages/Inicio";
+import Explorar from "./pages/Explorar";
+import PeliculasVistas from "./pages/PeliculasVistas";
+import DetallePelicula from "./pages/DetallePelicula";
+import NoEncontrada from "./pages/NoEncontrada";
+
 // ========================================
 // IMPORTACIÓN DE COMPONENTES
 // ========================================
 
-import Header from "./components/Header/Header"
-import ListaPeliculas from "./components/ListaPeliculas/ListaPeliculas";
-import TarjetaPelicula from "./components/TarjetaPelicula/TarjetaPelicula";
-import { useState } from "react";
-import FormularioPelicula from "./components/FormularioPelicula/FormularioPelicula";
+import Header from "./components/Header/Header";
 
 // ========================================
-// HEADER
+// IMPORTACIÓN DE HOOKS
+// ========================================
+
+import usePeliculas from "./hooks/usePeliculas";
+import useLocalStorage from "./hooks/useLocalStorage";
+
+// ========================================
+// COMPONENTE PRINCIPAL
 // ========================================
 
 function App() {
 
-    const [peliculas, setPeliculas] = useState ([
-        {id: 1, nombre: "Batman", anio: "1989", imagen: "https://images.squarespace-cdn.com/content/v1/50710c28c4aa65eb3b63d154/1713443201248-NWA1FLPL0C0A0N750R6O/image-asset.jpeg?format=1000w"},
-        {id: 2, nombre: "Titanic", anio: "1997", imagen: "https://m.media-amazon.com/images/I/71ZJ8am0mKL._AC_SY741_.jpg"},
-        {id: 3, nombre: "Avatar", anio: "2009", imagen: "https://cdng.europosters.eu/pod_public/1300/262963.jpg"},
-    ]);
+    // ========================================
+    // ESTADO DEL BUSCADOR
+    // ========================================
 
-    const eliminarPeliculas = (id) => {
-        setPeliculas((prev) => prev.filter((peliculas) => peliculas.id !== id));
+    const [busqueda, setBusqueda] = useState("");
+
+    const {
+        peliculas: peliculasAPI,
+        cargando,
+        error
+    } = usePeliculas(busqueda);
+
+
+    // ========================================
+    // PELÍCULAS VISTAS - LOCALSTORAGE
+    // ========================================
+
+    const [peliculasVistas, setPeliculasVistas] = useLocalStorage(
+        "peliculasVistas",
+        []
+    );
+
+
+    // ========================================
+    // MARCAR PELÍCULA COMO VISTA
+    // ========================================
+
+    const marcarComoVista = (pelicula) => {
+        setPeliculasVistas((prev) => {
+            const yaExiste = prev.some((p) => p.id === pelicula.id);
+
+            if (yaExiste) {
+                return prev;
+            }
+
+            return [...prev, pelicula];
+        });
     };
 
-    const agregarPelicula = (datos) => {
-        const nuevaPelicula = {
-            id: crypto.randomUUID(), 
-            nombre: datos.titulo,
-            anio: datos.anio,
-            imagen: datos.url,
-        };
-        setPeliculas ((prev) => [...prev, nuevaPelicula]);
-    }
 
-return (
-    <>
-        <Header />
+    // ========================================
+    // QUITAR PELÍCULA DE VISTAS
+    // ========================================
 
-        <ListaPeliculas peliculas={peliculas} 
-        onEliminar={eliminarPeliculas} />
+    const quitarDeVistas = (id) => {
+        setPeliculasVistas((prev) =>
+            prev.filter((pelicula) => pelicula.id !== id)
+        );
+    };
 
-        <FormularioPelicula onAgregar={agregarPelicula} />
-        
-        
-    </>
-     )    
+
+    // ========================================
+    // RENDERIZADO Y RUTAS
+    // ========================================
+
+    return (
+        <>
+            <Header />
+
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Inicio />}
+                />
+
+                <Route
+                    path="/explorar"
+                    element={
+                        <Explorar
+                            busqueda={busqueda}
+                            setBusqueda={setBusqueda}
+                            peliculasAPI={peliculasAPI}
+                            cargando={cargando}
+                            error={error}
+                            marcarComoVista={marcarComoVista}
+                        />
+                    }
+                />
+
+                <Route
+                    path="/vistas"
+                    element={
+                        <PeliculasVistas
+                            peliculasVistas={peliculasVistas}
+                            quitarDeVistas={quitarDeVistas}
+                        />
+                    }
+                />
+
+                <Route
+                    path="/pelicula/:id"
+                    element={<DetallePelicula />}
+                />
+
+                <Route
+                    path="*"
+                    element={<NoEncontrada />}
+                />
+            </Routes>
+        </>
+    );
 }
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
+
 export default App;
+
