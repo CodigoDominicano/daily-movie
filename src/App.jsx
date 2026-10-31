@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -23,7 +22,6 @@ import Header from "./components/Header/Header";
 // ========================================
 
 import usePeliculas from "./hooks/usePeliculas";
-import useLocalStorage from "./hooks/useLocalStorage";
 
 // ========================================
 // COMPONENTE PRINCIPAL
@@ -37,50 +35,15 @@ function App() {
 
     const [busqueda, setBusqueda] = useState("");
 
+    // ========================================
+    // CONSULTA DE PELÍCULAS A OMDB
+    // ========================================
+
     const {
         peliculas: peliculasAPI,
         cargando,
         error
     } = usePeliculas(busqueda);
-
-
-    // ========================================
-    // PELÍCULAS VISTAS - LOCALSTORAGE
-    // ========================================
-
-    const [peliculasVistas, setPeliculasVistas] = useLocalStorage(
-        "peliculasVistas",
-        []
-    );
-
-
-    // ========================================
-    // MARCAR PELÍCULA COMO VISTA
-    // ========================================
-
-    const marcarComoVista = (pelicula) => {
-        setPeliculasVistas((prev) => {
-            const yaExiste = prev.some((p) => p.id === pelicula.id);
-
-            if (yaExiste) {
-                return prev;
-            }
-
-            return [...prev, pelicula];
-        });
-    };
-
-
-    // ========================================
-    // QUITAR PELÍCULA DE VISTAS
-    // ========================================
-
-    const quitarDeVistas = (id) => {
-        setPeliculasVistas((prev) =>
-            prev.filter((pelicula) => pelicula.id !== id)
-        );
-    };
-
 
     // ========================================
     // RENDERIZADO Y RUTAS
@@ -105,19 +68,13 @@ function App() {
                             peliculasAPI={peliculasAPI}
                             cargando={cargando}
                             error={error}
-                            marcarComoVista={marcarComoVista}
                         />
                     }
                 />
 
                 <Route
                     path="/vistas"
-                    element={
-                        <PeliculasVistas
-                            peliculasVistas={peliculasVistas}
-                            quitarDeVistas={quitarDeVistas}
-                        />
-                    }
+                    element={<PeliculasVistas />}
                 />
 
                 <Route
@@ -139,4 +96,3 @@ function App() {
 // ========================================
 
 export default App;
-

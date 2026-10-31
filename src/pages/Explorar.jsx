@@ -1,20 +1,33 @@
 
- // ========================================
- // IMPORTACIÓN DE COMPONENTES
- // ========================================
+// ========================================
+// IMPORTACIÓN DE COMPONENTES
+// ========================================
 
 import Buscador from "../components/Buscador/Buscador";
 import ListaPeliculas from "../components/ListaPeliculas/ListaPeliculas";
 
 // ========================================
- // COMPONENTE EXPLORAR
- // ========================================
+// IMPORTACIÓN DEL CONTEXTO
+// ========================================
 
-function Explorar({ busqueda, setBusqueda, peliculasAPI, cargando, error, marcarComoVista }) {
+import { usePeliculasContext } from "../context/PeliculasContext";
+
+// ========================================
+// COMPONENTE EXPLORAR
+// ========================================
+
+function Explorar({ busqueda, setBusqueda, peliculasAPI, cargando, error}) {
+
+    // ========================================
+    // ACCESO AL CONTEXTO
+    // ========================================
+
+        const { marcarComoVista } = usePeliculasContext();
 
     // ========================================
     // RENDERIZADO
     // ========================================
+
 
     return (
         <>
