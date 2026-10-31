@@ -1,0 +1,67 @@
+
+/* ========================================
+   FOOTER PRINCIPAL
+======================================== */
+
+.footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 18px 15px;
+
+    background-color: #1e2026;
+    border-top: 1px solid #34363d;
+    text-align: center;
+}
+
+
+/* ========================================
+   ESLOGAN
+======================================== */
+
+.footer .footer-eslogan {
+    margin: 0 0 4px;
+    color: #c4c7ce;
+    font-size: 0.9rem;
+}
+
+
+/* ========================================
+   CRÉDITOS DEL PROYECTO
+======================================== */
+
+.footer-creditos {
+    padding: 0;
+    border: none;
+}
+
+.footer-creditos p {
+    margin: 3px 0;
+    color: #a9adb7;
+    font-size: 0.8rem;
+}
+
+.footer-creditos span {
+    color: #e5484d;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .footer {
+        padding: 15px 12px;
+    }
+
+    .footer .footer-eslogan {
+        font-size: 0.85rem;
+    }
+
+    .footer-creditos p {
+        font-size: 0.75rem;
+    }
+}
+

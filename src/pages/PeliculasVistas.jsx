@@ -32,8 +32,14 @@ function PeliculasVistas() {
     // TOTAL DE PELÍCULAS VISTAS
     // ========================================
 
-        const totalVistas = useMemo(() => {
-        return peliculasVistas.length;
+        const totalVistas = peliculasVistas.length;
+
+    // ========================================
+    // ORDENAR PELÍCULAS VISTAS
+    // ========================================
+
+        const peliculasOrdenadas = useMemo(() => {
+        return [...peliculasVistas].reverse();
         }, [peliculasVistas]);
 
     // ========================================
@@ -46,7 +52,7 @@ function PeliculasVistas() {
             <p className="contador-vistas">Total de películas vistas: {totalVistas}</p>
 
             <ListaPeliculas
-                peliculas={peliculasVistas}
+                peliculas={peliculasOrdenadas}
                 tituloLista="Películas vistas"
                 onEliminar={quitarDeVistas}
             />

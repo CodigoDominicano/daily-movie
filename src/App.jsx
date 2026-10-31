@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // ========================================
@@ -16,34 +15,13 @@ import NoEncontrada from "./pages/NoEncontrada";
 // ========================================
 
 import Header from "./components/Header/Header";
-
-// ========================================
-// IMPORTACIÓN DE HOOKS
-// ========================================
-
-import usePeliculas from "./hooks/usePeliculas";
+import Footer from "./components/Footer/Footer";
 
 // ========================================
 // COMPONENTE PRINCIPAL
 // ========================================
 
 function App() {
-
-    // ========================================
-    // ESTADO DEL BUSCADOR
-    // ========================================
-
-    const [busqueda, setBusqueda] = useState("");
-
-    // ========================================
-    // CONSULTA DE PELÍCULAS A OMDB
-    // ========================================
-
-    const {
-        peliculas: peliculasAPI,
-        cargando,
-        error
-    } = usePeliculas(busqueda);
 
     // ========================================
     // RENDERIZADO Y RUTAS
@@ -59,18 +37,7 @@ function App() {
                     element={<Inicio />}
                 />
 
-                <Route
-                    path="/explorar"
-                    element={
-                        <Explorar
-                            busqueda={busqueda}
-                            setBusqueda={setBusqueda}
-                            peliculasAPI={peliculasAPI}
-                            cargando={cargando}
-                            error={error}
-                        />
-                    }
-                />
+                <Route path="/explorar" element={<Explorar />} />
 
                 <Route
                     path="/vistas"
@@ -87,8 +54,11 @@ function App() {
                     element={<NoEncontrada />}
                 />
             </Routes>
+
+        <Footer />
         </>
     );
+
 }
 
 // ========================================

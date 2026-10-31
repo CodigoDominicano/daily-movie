@@ -35,8 +35,14 @@ function Inicio() {
     return (
         <>
             <h2 className="titulo-pagina">Película del día: {peliculaDelDia.nombre}</h2>
-            {cargandoDiario && <p>Cargando película del día...</p>}
-            {errorDiario && <p>Error: {errorDiario}</p>}
+            {cargandoDiario && (
+            <p className="mensaje-busqueda">Cargando película del día...</p>
+            )}
+
+            {errorDiario && (
+            <p className="mensaje-busqueda">Error: {errorDiario}</p>
+            )}
+            
             {detalleDiario && (
             <div className="pelicula-destacada">
                 <img

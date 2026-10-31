@@ -3,7 +3,7 @@
 // IMPORTACIÓN DE COMPONENTES Y LIBRERÍAS
 // ========================================
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // ========================================
 // IMPORTACIÓN DE ESTILOS
@@ -25,10 +25,13 @@ function Header() {
         <header>
 
             {/* ========================================
-                TÍTULO DE LA APLICACIÓN
+                LOGO Y FIRMA DEL DESARROLLADOR
             ======================================== */}
 
+            <Link to="/" className="logo-header">
             <h1>Daily Movie</h1>
+            <span>Descubre, explora y guarda tus películas favoritas.</span>
+            </Link>
 
             {/* ========================================
                 MENÚ DE NAVEGACIÓN

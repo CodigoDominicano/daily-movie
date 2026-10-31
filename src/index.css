@@ -148,6 +148,32 @@ img {
     margin-bottom: 15px;
 }
 
+/* ========================================
+   DISTRIBUCIÓN GENERAL DE LA APLICACIÓN
+======================================== */
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root > .footer {
+    margin-top: auto;
+}
+
+/* ========================================
+   MENSAJES DEL BUSCADOR
+======================================== */
+
+.mensaje-busqueda {
+    width: 90%;
+    max-width: 550px;
+    margin: 15px auto;
+    text-align: center;
+    color: #c4c7ce;
+    font-size: 0.95rem;
+}
 
 /* ========================================
    DISEÑO RESPONSIVE

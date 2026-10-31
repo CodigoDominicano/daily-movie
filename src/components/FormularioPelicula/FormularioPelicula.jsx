@@ -130,7 +130,7 @@ function FormularioPelicula({ onAgregar }) {
 
             <div>
                 <button className="boton-primario" type="submit">
-                    Agregar película
+                    AGREGAR PELICULA
                 </button>
             </div>
 

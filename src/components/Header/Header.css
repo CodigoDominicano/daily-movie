@@ -59,6 +59,37 @@ header nav a.active {
 
 
 /* ========================================
+   LOGO Y FIRMA DEL DESARROLLADOR
+======================================== */
+
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.logo-header h1 {
+    margin: 0;
+    color: #e5484d;
+    transition: color 0.2s ease;
+}
+
+.logo-header span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #a9adb7;
+    letter-spacing: 1px;
+}
+
+.logo-header:hover h1 {
+    color: #ff656a;
+}
+
+
+/* ========================================
    DISEÑO RESPONSIVE
 ======================================== */
 

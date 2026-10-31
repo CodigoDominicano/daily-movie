@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 // ========================================
 // IMPORTACIÓN DEL HOOK DE AGREGADAS
 // ========================================
 
+import usePeliculas from "../hooks/usePeliculas";
 import useAgregadasRecien from "../hooks/useAgregadasRecien";
 
 // ========================================
@@ -21,7 +24,23 @@ import { usePeliculasContext } from "../context/PeliculasContext";
 // COMPONENTE EXPLORAR
 // ========================================
 
-function Explorar({ busqueda, setBusqueda, peliculasAPI, cargando, error}) {
+function Explorar() {
+
+    // ========================================
+    // ESTADO DEL BUSCADOR
+    // ========================================
+
+        const [busqueda, setBusqueda] = useState("");
+
+    // ========================================
+    // CONSULTA DE PELÍCULAS A OMDB
+    // ========================================
+
+        const {
+            peliculas: peliculasAPI,
+            cargando,
+            error
+        } = usePeliculas(busqueda);
 
     // ========================================
     // ACCESO AL CONTEXTO
@@ -60,11 +79,11 @@ function Explorar({ busqueda, setBusqueda, peliculasAPI, cargando, error}) {
 
             {   busqueda.trim() ? (
     <>
-        {cargando && <p>Cargando películas...</p>}
-        {error && <p>Error: {error}</p>}
+                {cargando && <p className="mensaje-busqueda">Cargando películas...</p>}
+                {error && <p className="mensaje-busqueda">Error: {error}</p>}
 
-        {!cargando && !error && (
-            <ListaPeliculas
+            {!cargando && !error && (
+             <ListaPeliculas
                 peliculas={peliculasAPI}
                 onMarcarVista={marcarComoVista}
                 tituloLista="Resultados de búsqueda"
@@ -73,8 +92,13 @@ function Explorar({ busqueda, setBusqueda, peliculasAPI, cargando, error}) {
     </>
             ) : (
         <>
-        {cargandoAgregadas && <p>Cargando películas...</p>}
-        {errorAgregadas && <p>Error: {errorAgregadas}</p>}
+        {cargandoAgregadas && (
+        <p className="mensaje-busqueda">Cargando películas...</p>
+        )}
+
+        {errorAgregadas && (
+        <p className="mensaje-busqueda">Error: {errorAgregadas}</p>
+        )}
 
         {!cargandoAgregadas && !errorAgregadas && (
             <ListaPeliculas

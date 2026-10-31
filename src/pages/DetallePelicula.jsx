@@ -31,9 +31,9 @@ function DetallePelicula() {
         <>
             <h2 className="titulo-pagina">Detalle de la película</h2>
 
-            {cargando && <p>Cargando detalles...</p>}
+            {cargando && <p className="mensaje-busqueda">Cargando detalles...</p>}
 
-            {error && <p>Error: {error}</p>}
+            {error && <p className="mensaje-busqueda">Error: {error}</p>}
 
             {pelicula && (
                 <div className="pelicula-destacada">
