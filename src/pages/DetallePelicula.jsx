@@ -29,7 +29,7 @@ function DetallePelicula() {
 
     return (
         <>
-            <h2>Detalle de la película</h2>
+            <h2 className="titulo-pagina">Detalle de la película</h2>
 
             {cargando && <p>Cargando detalles...</p>}
 

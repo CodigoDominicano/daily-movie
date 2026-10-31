@@ -1,6 +1,7 @@
 
 import "./TarjetaPelicula.css";
 import { Link } from "react-router-dom";
+import { usePeliculasContext } from "../../context/PeliculasContext";
 
 // ========================================
 // COMPONENTE TARJETA PELÍCULA
@@ -20,6 +21,16 @@ function TarjetaPelicula({
     // ========================================
 
     const esPeliculaIMDb = /^tt\d+$/.test(String(id));
+
+    // ========================================
+    // COMPROBAR SI LA PELÍCULA YA ESTÁ VISTA
+    // ========================================
+
+        const { peliculasVistas } = usePeliculasContext();
+
+        const yaEstaVista = peliculasVistas.some(
+        (pelicula) => pelicula.id === id
+        );
 
     // ========================================
     // RENDERIZADO
@@ -75,15 +86,16 @@ function TarjetaPelicula({
                 BOTÓN MARCAR COMO VISTA
             ======================================== */}
 
-            {onMarcarVista && (
-                <button
+                {onMarcarVista && (
+                    <button
                     type="button"
-                    className="boton-marcavista"
+                    className={`boton-marcavista ${yaEstaVista ? "agregada" : ""}`}
                     onClick={onMarcarVista}
-                >
-                    Marcar como vista
-                </button>
-            )}
+                    disabled={yaEstaVista}
+                    >
+                    {yaEstaVista ? "★ Agregada ✓" : "☆ Marcar como vista"}
+                    </button>
+                )}
 
         </article>
     );

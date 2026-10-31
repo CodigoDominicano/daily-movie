@@ -2,6 +2,16 @@
 
 **Daily Movie** es una aplicación web desarrollada con React que permite descubrir una película diferente cada día, buscar películas mediante la API OMDb y guardar una colección personal de películas vistas.
 
+
+## 🌐 Aplicación publicada
+
+Daily Movie está disponible en Vercel y se puede utilizar directamente desde el navegador, sin necesidad de instalar el proyecto.
+
+**Enlace de la aplicación:** https://daily-movie-mu.vercel.app/
+
+**Repositorio de GitHub:** https://github.com/CodigoDominicano/daily-movie
+
+
 ## 📌 Descripción del proyecto
 
 Proyecto final del módulo de Desarrollo Frontend con React.

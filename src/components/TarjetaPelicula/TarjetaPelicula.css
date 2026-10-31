@@ -113,6 +113,49 @@
 
 
 /* ========================================
+   BOTÓN DE PELÍCULA YA AGREGADA
+======================================== */
+
+.tarjeta-pelicula .boton-marcavista.agregada {
+    background-color: #395445;
+    color: #ffd166;
+    opacity: 1;
+    cursor: default;
+    animation: peliculaAgregada 0.35s ease-out;
+}
+
+
+/* ========================================
+   ANIMACIÓN AL AGREGAR UNA PELÍCULA
+======================================== */
+
+@keyframes peliculaAgregada {
+    0% {
+        transform: scale(0.95);
+    }
+
+    60% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   RESPETAR PREFERENCIAS DE MOVIMIENTO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-pelicula .boton-marcavista.agregada {
+        animation: none;
+    }
+}
+
+
+/* ========================================
    DISEÑO RESPONSIVE
 ======================================== */
 
