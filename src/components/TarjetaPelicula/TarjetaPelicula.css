@@ -1,0 +1,129 @@
+
+/* ========================================
+   TARJETA DE PELÍCULA
+======================================== */
+
+.tarjeta-pelicula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 260px;
+    padding: 18px;
+
+    background-color: #1e2026;
+    border: 1px solid #34363d;
+    border-radius: 10px;
+
+    text-align: center;
+    transition: border-color 0.2s ease;
+}
+
+.tarjeta-pelicula:hover {
+    border-color: #e5484d;
+}
+
+
+/* ========================================
+   PÓSTER DE LA PELÍCULA
+======================================== */
+
+.tarjeta-pelicula img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+/* ========================================
+   TÍTULO Y AÑO
+======================================== */
+
+.tarjeta-pelicula h2 {
+    margin: 5px 0 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.anio-pelicula {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #a9adb7;
+}
+
+
+/* ========================================
+   BOTÓN VER MÁS
+======================================== */
+
+.tarjeta-pelicula .boton-primario {
+    background-color: #e5484d;
+    color: #ffffff;
+}
+
+.tarjeta-pelicula .boton-primario:hover {
+    background-color: #c9363c;
+}
+
+
+/* ========================================
+   BOTÓN ELIMINAR
+======================================== */
+
+.tarjeta-pelicula .boton-secundario {
+    background-color: #34363d;
+    color: #f5f5f5;
+}
+
+.tarjeta-pelicula .boton-secundario:hover {
+    background-color: #a72f35;
+}
+
+
+/* ========================================
+   BOTÓN MARCAR COMO VISTA
+======================================== */
+
+.tarjeta-pelicula .boton-marcavista {
+    background-color: #303b35;
+    color: #d5f1df;
+}
+
+.tarjeta-pelicula .boton-marcavista:hover {
+    background-color: #3d5848;
+}
+
+
+/* ========================================
+   ESPACIADO DE LOS BOTONES
+======================================== */
+
+.tarjeta-pelicula a {
+    display: block;
+    width: 100%;
+}
+
+.tarjeta-pelicula button {
+    width: 100%;
+    max-width: 220px;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .tarjeta-pelicula {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .tarjeta-pelicula img {
+        height: 260px;
+    }
+}

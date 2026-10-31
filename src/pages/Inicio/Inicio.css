@@ -1,0 +1,95 @@
+
+/* ========================================
+   PELÍCULA DEL DÍA
+======================================== */
+
+.pelicula-destacada {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    width: 90%;
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 30px;
+
+    background-color: #1e2026;
+    border: 1px solid #34363d;
+    border-radius: 12px;
+}
+
+
+/* ========================================
+   PÓSTER DE LA PELÍCULA
+======================================== */
+
+.pelicula-destacada img {
+    width: 230px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+/* ========================================
+   INFORMACIÓN DE LA PELÍCULA
+======================================== */
+
+.pelicula-destacada h3 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+
+.pelicula-destacada p {
+    color: #c4c7ce;
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+.pelicula-destacada strong {
+    color: #f5f5f5;
+}
+
+
+/* ========================================
+   TÍTULO DE LA PÁGINA INICIO
+======================================== */
+
+.pelicula-destacada + p {
+    text-align: center;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 650px) {
+
+    .pelicula-destacada {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .pelicula-destacada img {
+        width: 200px;
+    }
+
+    .pelicula-destacada h3 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
+
+/* ========================================
+   CONTENEDOR DE INFORMACIÓN
+======================================== */
+
+.info-pelicula {
+    flex: 1;
+    min-width: 0;
+}

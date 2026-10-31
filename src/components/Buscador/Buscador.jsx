@@ -1,15 +1,34 @@
+
+// ========================================
+// IMPORTACIÓN DE ESTILOS
+// ========================================
+
 import "./Buscador.css";
 
-function Buscador ({busqueda,setBusqueda}) {
+// ========================================
+// COMPONENTE BUSCADOR
+// ========================================
+
+function Buscador({ busqueda, setBusqueda }) {
+
+    // ========================================
+    // RENDERIZADO
+    // ========================================
+
     return (
-    <div>
-        <input 
-        type="text" placeholder="Buscar peliculas..."
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        />    
-    </div>
-    )
+        <div>
+            <input
+                type="text"
+                placeholder="Buscar películas..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+            />
+        </div>
+    );
 }
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
 
 export default Buscador;

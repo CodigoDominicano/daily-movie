@@ -1,3 +1,4 @@
+import "./Inicio/Inicio.css";
 
  // ========================================
  // IMPORTACIÓN DE HOOKS
@@ -35,21 +36,22 @@ function DetallePelicula() {
             {error && <p>Error: {error}</p>}
 
             {pelicula && (
-                <div>
+                <div className="pelicula-destacada">
                     <img
                         src={pelicula.Poster}
                         alt={pelicula.Title}
                         width="200"
                     />
 
-                    <h3>{pelicula.Title} ({pelicula.Year})</h3>
-
-                    <p><strong>Género:</strong> {pelicula.Genre}</p>
-                    <p><strong>Director:</strong> {pelicula.Director}</p>
-                    <p><strong>Sinopsis:</strong> {pelicula.Plot}</p>
-                    <p><strong>Calificación IMDb:</strong> {pelicula.imdbRating}</p>
+                    <div className="info-pelicula">
+                        <h3>{pelicula.Title} ({pelicula.Year})</h3>
+                        <p><strong>Género:</strong> {pelicula.Genre}</p>
+                        <p><strong>Director:</strong> {pelicula.Director}</p>
+                        <p><strong>Sinopsis:</strong> {pelicula.Plot}</p>
+                        <p><strong>Calificación IMDb:</strong> {pelicula.imdbRating}</p>
+                    </div>
                 </div>
-            )}
+)}
         </>
     );
 }

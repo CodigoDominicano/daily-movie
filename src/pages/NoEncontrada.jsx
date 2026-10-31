@@ -1,5 +1,21 @@
+
+// ========================================
+// COMPONENTE PÁGINA NO ENCONTRADA
+// ========================================
+
 function NoEncontrada() {
-  return <h2>404 - Página no encontrada</h2>;
+
+    // ========================================
+    // RENDERIZADO
+    // ========================================
+
+    return (
+        <h2>404 - Página no encontrada</h2>
+    );
 }
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
 
 export default NoEncontrada;

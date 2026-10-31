@@ -1,53 +1,108 @@
+
 import { useState, useEffect } from "react";
 
-const usePeliculaDetalle = (id) => {
+// ========================================
+// HOOK PERSONALIZADO USEPELICULADETALLE
+// ========================================
 
-  const [pelicula, setPelicula] = useState(null);
-  const [cargando, setCargando] = useState(false);
-  const [error, setError] = useState(null);
+function usePeliculaDetalle(id) {
 
-  useEffect(() => {
+    // ========================================
+    // ESTADOS
+    // ========================================
 
-    const obtenerDetalle = async () => {
-    setCargando(true);
-    setError(null);
-    setPelicula(null);
+    const [pelicula, setPelicula] = useState(null);
+    const [cargando, setCargando] = useState(false);
+    const [error, setError] = useState(null);
 
-    try {
-    const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
-    const urlAPI = `https://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`;
+    // ========================================
+    // CONSULTA A LA API OMDB
+    // ========================================
 
-    const respuesta = await fetch(urlAPI);
+    useEffect(() => {
 
-    if (!respuesta.ok) {
-      throw new Error("Error al consultar la película");
-    }
+        const controlador = new AbortController();
 
-    const datos = await respuesta.json();
+        const obtenerDetalle = async () => {
+            setCargando(true);
+            setError(null);
+            setPelicula(null);
 
-    if (datos.Response === "True") {
-      setPelicula(datos);
-    } else {
-      setError(datos.Error);
-    }
+            // ========================================
+            // EVITAR CONSULTAS SIN ID
+            // ========================================
 
-  } catch (error) {
-    setError(error.message);
-  } finally {
-    setCargando(false);
-  }
-};
+            if (!id) {
+                setError("No se proporcionó una película.");
+                setCargando(false);
+                return;
+            }
 
- obtenerDetalle();
+            // ========================================
+            // PETICIÓN A OMDB
+            // ========================================
 
-  }, [id]);
- 
+            try {
+                const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+                const urlAPI = `https://www.omdbapi.com/?i=${encodeURIComponent(id)}&apikey=${apiKey}`;
 
-  return {
-    pelicula,
-    cargando,
-    error
-  };
-};
+                const respuesta = await fetch(urlAPI, {
+                    signal: controlador.signal
+                });
+
+                if (!respuesta.ok) {
+                    throw new Error("Error al consultar la película");
+                }
+
+                const datos = await respuesta.json();
+
+                // ========================================
+                // PROCESAR RESULTADOS
+                // ========================================
+
+                if (datos.Response === "True") {
+                    setPelicula(datos);
+                } else {
+                    throw new Error(
+                        datos.Error || "No se encontró la película."
+                    );
+                }
+
+            // ========================================
+            // MANEJO DE ERRORES
+            // ========================================
+
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    setError(error.message);
+                }
+
+            } finally {
+                if (!controlador.signal.aborted) {
+                    setCargando(false);
+                }
+            }
+        };
+
+        obtenerDetalle();
+
+        // ========================================
+        // LIMPIEZA DEL EFECTO
+        // ========================================
+
+        return () => controlador.abort();
+
+    }, [id]);
+
+    // ========================================
+    // RETORNO DEL HOOK
+    // ========================================
+
+    return { pelicula, cargando, error };
+}
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
 
 export default usePeliculaDetalle;

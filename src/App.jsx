@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 // IMPORTACIÓN DE PÁGINAS
 // ========================================
 
-import Inicio from "./pages/Inicio";
+import Inicio from "./pages/Inicio/Inicio";
 import Explorar from "./pages/Explorar";
 import PeliculasVistas from "./pages/PeliculasVistas";
 import DetallePelicula from "./pages/DetallePelicula";

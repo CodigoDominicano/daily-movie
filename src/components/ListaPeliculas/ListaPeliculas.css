@@ -1,0 +1,82 @@
+
+/* ========================================
+   CONTENEDOR DE PELÍCULAS
+======================================== */
+
+.lista-peliculas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+    justify-content: center;
+    gap: 24px;
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+
+/* ========================================
+   TÍTULO DE LA LISTA
+======================================== */
+
+.lista-peliculas h2 {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0 0 5px;
+
+    font-size: 1.5rem;
+    color: #f5f5f5;
+}
+
+
+/* ========================================
+   MENSAJE SIN RESULTADOS
+======================================== */
+
+.lista-peliculas .texto-secundario {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    margin: 10px 0;
+    padding: 25px 20px;
+
+    background-color: #1e2026;
+    border: 1px solid #34363d;
+    border-radius: 8px;
+
+    color: #bfc3cc;
+    text-align: center;
+}
+
+
+/* ========================================
+   ALINEACIÓN DE LAS TARJETAS
+======================================== */
+
+.lista-peliculas .tarjeta-pelicula {
+    height: 100%;
+    margin: 0;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .lista-peliculas {
+        grid-template-columns: minmax(0, 320px);
+        width: 94%;
+        gap: 18px;
+        margin: 20px auto;
+    }
+
+    .lista-peliculas h2 {
+        font-size: 1.3rem;
+    }
+
+    .lista-peliculas .texto-secundario {
+        padding: 20px 15px;
+    }
+}

@@ -1,60 +1,145 @@
-import "./FormularioPelicula.css";
+
 import { useState } from "react";
- 
-function FormularioPelicula ({onAgregar}) {
-   const [titulo, setTitulo] = useState ("");
-   const [anio, setAnio] = useState ("");
-   const [url, setUrl] = useState ("")
- 
-   const cambiarTitulo = (e) => {
-    setTitulo(e.target.value);
-  };
-   
-   const cambiarAnio = (e) => {
-    setAnio(e.target.value);
-  };
 
-  const cambiarUrl = (e) => {
-    setUrl(e.target.value);
-  };
- 
-  const enviar = (e) => {
-    e.preventDefault();
-    const datos = { titulo, anio, url };
-    console.log(datos);
-    onAgregar(datos);
-    setTitulo("");
-    setAnio("");
-    setUrl("");
-  };
+// ========================================
+// IMPORTACIÓN DE ESTILOS
+// ========================================
 
+import "./FormularioPelicula.css";
 
- 
-  return (
-   
-   <form className="formulario-pelicula" onSubmit={enviar}>
+// ========================================
+// COMPONENTE FORMULARIO PELÍCULA
+// ========================================
 
-      <div>
-        <label className="etiqueta" htmlFor="titulo"> Titulo de la Pelicula </label>
-        <input id="titulo" type="text" className="campo" value={titulo} onChange={cambiarTitulo} required />
-      </div>
+function FormularioPelicula({ onAgregar }) {
 
-      <div>
-        <label className="etiqueta" htmlFor="anio"> Año de la Pelicula </label>
-        <input id="anio" type="numer" className="campo" value={anio} onChange={cambiarAnio} required />
-      </div>
+    // ========================================
+    // ESTADOS DEL FORMULARIO
+    // ========================================
 
-      <div>
-        <label className="etiqueta" htmlFor="url"> URL del Poster </label>
-        <input id="url" type="url" className="campo" value={url} onChange={cambiarUrl} required />
-      </div>
+    const [titulo, setTitulo] = useState("");
+    const [anio, setAnio] = useState("");
+    const [url, setUrl] = useState("");
 
-      <div>
-        <button className="boton-primario" type="submit"> Agregar Pelicula </button>
-      </div>
+    // ========================================
+    // FUNCIONES PARA ACTUALIZAR LOS CAMPOS
+    // ========================================
 
-    </form>
-  );
+    const cambiarTitulo = (e) => {
+        setTitulo(e.target.value);
+    };
+
+    const cambiarAnio = (e) => {
+        setAnio(e.target.value);
+    };
+
+    const cambiarUrl = (e) => {
+        setUrl(e.target.value);
+    };
+
+    // ========================================
+    // FUNCIÓN PARA AGREGAR PELÍCULAS
+    // ========================================
+
+    const enviar = (e) => {
+        e.preventDefault();
+
+        const datos = {
+            titulo,
+            anio,
+            url
+        };
+
+        onAgregar(datos);
+
+        // Limpiar los campos después de agregar
+        setTitulo("");
+        setAnio("");
+        setUrl("");
+    };
+
+    // ========================================
+    // RENDERIZADO
+    // ========================================
+
+    return (
+        <form className="formulario-pelicula" onSubmit={enviar}>
+
+            {/* ========================================
+                CAMPO TÍTULO
+            ======================================== */}
+
+            <div>
+                <label className="etiqueta" htmlFor="titulo">
+                    Título de la película
+                </label>
+
+                <input
+                    id="titulo"
+                    type="text"
+                    className="campo"
+                    value={titulo}
+                    onChange={cambiarTitulo}
+                    required
+                />
+            </div>
+
+            {/* ========================================
+                CAMPO AÑO
+            ======================================== */}
+
+            <div>
+                <label className="etiqueta" htmlFor="anio">
+                    Año de la película
+                </label>
+
+                <input
+                    id="anio"
+                    type="number"
+                    className="campo"
+                    value={anio}
+                    onChange={cambiarAnio}
+                    min="1888"
+                    max="2100"
+                    required
+                />
+            </div>
+
+            {/* ========================================
+                CAMPO URL DEL PÓSTER
+            ======================================== */}
+
+            <div>
+                <label className="etiqueta" htmlFor="url">
+                    URL del póster
+                </label>
+
+                <input
+                    id="url"
+                    type="url"
+                    className="campo"
+                    value={url}
+                    onChange={cambiarUrl}
+                    required
+                />
+            </div>
+
+            {/* ========================================
+                BOTÓN AGREGAR
+            ======================================== */}
+
+            <div>
+                <button className="boton-primario" type="submit">
+                    Agregar película
+                </button>
+            </div>
+
+        </form>
+    );
 }
- 
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
+
 export default FormularioPelicula;

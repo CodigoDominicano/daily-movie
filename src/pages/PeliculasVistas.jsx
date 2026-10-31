@@ -42,8 +42,8 @@ function PeliculasVistas() {
 
     return (
         <>
-            <h2>Mis películas vistas</h2>
-            <p>Total de películas vistas: {totalVistas}</p>
+            <h2 className="titulo-pagina">Mis películas vistas</h2>
+            <p className="contador-vistas">Total de películas vistas: {totalVistas}</p>
 
             <ListaPeliculas
                 peliculas={peliculasVistas}
@@ -55,7 +55,7 @@ function PeliculasVistas() {
             FORMULARIO PARA AGREGAR PELÍCULAS
             ======================================== */}
 
-            <h3>Agregar película manualmente</h3>
+            <h3 className="titulo-formulario">Agregar película manualmente</h3>
             <FormularioPelicula onAgregar={agregarPelicula} />
 
         </>

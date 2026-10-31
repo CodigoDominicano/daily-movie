@@ -1,0 +1,99 @@
+
+/* ========================================
+   CONTENEDOR DEL FORMULARIO
+======================================== */
+
+.formulario-pelicula {
+    width: 90%;
+    max-width: 550px;
+    margin: 35px auto;
+    padding: 25px;
+
+    background-color: #1e2026;
+    border: 1px solid #34363d;
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   ESPACIADO DE LOS CAMPOS
+======================================== */
+
+.formulario-pelicula > div {
+    margin-bottom: 18px;
+}
+
+.formulario-pelicula > div:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   ETIQUETAS DEL FORMULARIO
+======================================== */
+
+.formulario-pelicula .etiqueta {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #e3e5e9;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+
+/* ========================================
+   CAMPOS DEL FORMULARIO
+======================================== */
+
+.formulario-pelicula .campo {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+
+    background-color: #15171c;
+    border: 1px solid #444851;
+    border-radius: 6px;
+
+    color: #f5f5f5;
+}
+
+.formulario-pelicula .campo:focus {
+    border-color: #e5484d;
+}
+
+
+/* ========================================
+   BOTÓN AGREGAR PELÍCULA
+======================================== */
+
+.formulario-pelicula .boton-primario {
+    width: 100%;
+    padding: 12px 16px;
+
+    background-color: #e5484d;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.formulario-pelicula .boton-primario:hover {
+    background-color: #c9363c;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .formulario-pelicula {
+        width: 94%;
+        margin: 25px auto;
+        padding: 18px;
+    }
+
+    .formulario-pelicula .campo {
+        padding: 11px 12px;
+    }
+}

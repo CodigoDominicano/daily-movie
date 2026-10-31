@@ -1,21 +1,41 @@
+
 import { useState, useEffect } from "react";
+
+// ========================================
+// HOOK PERSONALIZADO USELOCALSTORAGE
+// ========================================
 
 function useLocalStorage(clave, valorInicial) {
 
-  const [valor, setValor] = useState(() => {
-    const datosGuardados = localStorage.getItem(clave);
+    // ========================================
+    // ESTADO Y RECUPERACIÓN DE DATOS
+    // ========================================
 
-    return datosGuardados !== null
-      ? JSON.parse(datosGuardados)
-      : valorInicial;
-  });
+    const [valor, setValor] = useState(() => {
+        const datosGuardados = localStorage.getItem(clave);
 
-  useEffect(() => {
-    localStorage.setItem(clave, JSON.stringify(valor));
-  }, [clave, valor]);
+        return datosGuardados !== null
+            ? JSON.parse(datosGuardados)
+            : valorInicial;
+    });
 
+    // ========================================
+    // GUARDAR CAMBIOS EN LOCALSTORAGE
+    // ========================================
 
-  return [valor, setValor];
+    useEffect(() => {
+        localStorage.setItem(clave, JSON.stringify(valor));
+    }, [clave, valor]);
+
+    // ========================================
+    // RETORNO DEL HOOK
+    // ========================================
+
+    return [valor, setValor];
 }
+
+// ========================================
+// EXPORTACIÓN
+// ========================================
 
 export default useLocalStorage;

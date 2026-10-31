@@ -1,0 +1,64 @@
+
+/* ========================================
+   CONTENEDOR DEL BUSCADOR
+======================================== */
+
+.lista-peliculas + div {
+    margin: 0;
+}
+
+
+/* ========================================
+   CAMPO DE BÚSQUEDA
+======================================== */
+
+input[placeholder="Buscar películas..."] {
+    display: block;
+
+    width: 90%;
+    max-width: 550px;
+
+    margin: 30px auto;
+    padding: 14px 18px;
+
+    background-color: #1e2026;
+    border: 1px solid #444851;
+    border-radius: 8px;
+
+    color: #f5f5f5;
+    font-size: 1rem;
+
+    transition: border-color 0.2s ease;
+}
+
+
+/* ========================================
+   TEXTO DEL PLACEHOLDER
+======================================== */
+
+input[placeholder="Buscar películas..."]::placeholder {
+    color: #9398a3;
+}
+
+
+/* ========================================
+   EFECTO AL SELECCIONAR EL BUSCADOR
+======================================== */
+
+input[placeholder="Buscar películas..."]:focus {
+    border-color: #e5484d;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    input[placeholder="Buscar películas..."] {
+        width: 94%;
+        margin: 20px auto;
+        padding: 12px 15px;
+    }
+}
